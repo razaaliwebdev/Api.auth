@@ -1,6 +1,6 @@
 
 import express from 'express';
-import { login, profile, register } from '../controllers/userController.js';
+import { getAllUsers, login, profile, register } from '../controllers/userController.js';
 import upload from '../middlewares/upload.js';
 import authMiddlware from '../middlewares/authMiddleware.js'
 
@@ -17,6 +17,8 @@ router.post("/login", login);
 // Profile Route
 router.get("/me", authMiddlware, profile);
 
+// Get all the user Route
+router.get("/users", getAllUsers);
 
 
 
