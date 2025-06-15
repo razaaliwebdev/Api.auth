@@ -119,3 +119,27 @@ export const profile = async (req, res) => {
         });
     }
 };
+
+
+export const getAllUsers = async (req, res) => {
+    try {
+        const users = await User.find({});
+        if (users == 0) {
+            return res.status(401).json({
+                success: false,
+                message: "No Users Found."
+            });
+        };
+
+        return res.status(200).json({
+            success: true,
+            message: "Fetched all users successfully.",
+            users
+        });
+    } catch (error) {
+        return res.statu(500).json({
+            success: false,
+            message: "Internal server error", error
+        });
+    };
+};
