@@ -30,7 +30,7 @@ export const register = async (req, res) => {
             name,
             email,
             password: hashedPassword,
-            avatar: req.file?.path || "", // Check if avatar exists
+            avatar: req.file?.path || "", 
         });
 
         const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET, {
