@@ -29,7 +29,7 @@ export const register = async (req, res) => {
                 name,
                 email,
                 password: hashedPassword,
-                avatar: req.file.path    // Store the image path
+                // avatar: req.file.path    // Store the image path
             }
         );
 
