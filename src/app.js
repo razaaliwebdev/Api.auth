@@ -3,6 +3,7 @@ import express from 'express';
 import userRouter from './routes/userRoutes.js';
 import path from 'path';
 import fs from 'fs';
+import cors from 'cors';
 
 const app = express();
 const __dirname = path.resolve();
@@ -14,6 +15,11 @@ if (!fs.existsSync(uploadDir)) {
 }
 
 // Middleware
+app.use(cors({
+    origin: ["http://localhost:5173", "https://yourfrontenddomain.com"],
+    credentials: true
+}));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use('/uploads', express.static(uploadDir));
